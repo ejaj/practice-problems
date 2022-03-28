@@ -3,7 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,pycharm,django
 .vscode
 .idea
-
+.idea/practice-problems.iml
 ### Django ###
 *.log
 *.pot
