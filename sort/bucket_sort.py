@@ -5,7 +5,12 @@
 @Author : kazi
 @File : bucket_sort.py
 @Time : 4/3/22 12:28 AM
-@Desc: 
+@Desc: Bucket Sort
+Time Complexity:
+    Best Case - O(n+k)
+    Worst Case - O(n2)
+    Average Case - O(n)
+Space Complexity: O(n+k)
 """
 from typing import List
 
