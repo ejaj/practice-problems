@@ -1,0 +1,80 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+"""
+
+@Author : kazi
+@File : producer_sync.py
+@Time : 4/3/22 3:13 PM
+@Desc: 
+"""
+
+import datetime
+import colorama
+import random
+import time
+
+
+def generate_data(num: int, data: list):
+    """
+    Generate the data, work as a producer
+    Args:
+        num:
+        data:
+
+    Returns:
+
+    """
+    for idx in range(1, num + 1):
+        item = idx * idx
+        data.append((item, datetime.datetime.now()))
+
+        print(colorama.Fore.YELLOW + " generated item {}".format(idx), flush=True)
+        time.sleep(random.random() + .5)
+
+
+def process_data(num: int, data: list):
+    """
+    Process the data, work as a consumer
+    Args:
+        num:
+        data:
+
+    Returns:
+
+    """
+    processed = 0
+    while processed < num:
+        item = data.pop(0)
+        if not item:
+            time.sleep(.01)
+            continue
+        processed += 1
+        value = item[0]
+        t = item[1]
+        dt = datetime.datetime.now() - t
+
+        print(colorama.Fore.CYAN +
+              "Processed value {} after {:,.2f} sec.".format(value, dt.total_seconds()), flush=True)
+        time.sleep(.5)
+
+
+def main():
+    """
+    Main function for drive code
+    Returns:
+
+    """
+    start = datetime.datetime.now()
+    print(colorama.Fore.WHITE + "App started.", flush=True)
+    data = []
+    generate_data(10, data)
+    generate_data(10, data)
+    process_data(20, data)
+    end = datetime.datetime.now()
+    diff = end - start
+    print(colorama.Fore.WHITE + "App exiting, total time: {:,.2f} sec.".format(diff.total_seconds()), flush=True)
+    time.sleep(random.random() + .5)
+
+
+if __name__ == '__main__':
+    main()
