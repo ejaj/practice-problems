@@ -11,5 +11,16 @@ def removeDuplicates(nums):
     return i + 1
 
 
+def removeDuplicates2(nums):
+    if not nums:
+        return 0
+    l = 1
+    for r in range(1, len(nums)):
+        if nums[r - 1] != nums[r]:
+            l += 1
+            nums[l] = nums[r]
+    return l
+
+
 nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
-print(removeDuplicates(nums))
+print(removeDuplicates2(nums))
