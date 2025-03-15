@@ -20,7 +20,11 @@ def removeDuplicates2(nums):
             l += 1
             nums[l] = nums[r]
     return l
+def removeDuplicates3(nums):
+    unique = sorted(set(nums))
+    nums[:len(unique)] = unique
+    print(unique)
 
 
 nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
-print(removeDuplicates2(nums))
+print(removeDuplicates3(nums))
